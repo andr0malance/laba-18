@@ -1,0 +1,48 @@
+package com.company;
+import java.util.Scanner;
+import java.util.function.BinaryOperator;
+
+public class Main {
+    public static BinaryOperator<Integer> plus = (a, b) -> a + b;
+    public static BinaryOperator<Integer> minus = (a, b) -> a - b;
+    public static BinaryOperator<Integer> umnojit = (a, b) -> a * b;
+    public static BinaryOperator<Double> delenie = (a, b) -> (b != 0) ? a / b : 0.0;
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите операцию (+, -, *, /): ");
+        String operation = scanner.nextLine();
+
+        System.out.print("Введите первое число: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Введите второе число: ");
+        int num2 = scanner.nextInt();
+
+
+
+        switch (operation) {
+            case "+":
+                int result = plus.apply(num1, num2);
+                System.out.println ("Результат: " + num1 + " " + operation + " " + num2 + " = " + result);
+                break;
+            case "-":
+                int result2 = minus.apply(num1, num2);
+                System.out.println ("Результат: " + num1 + " " + operation + " " + num2 + " = " + result2);
+                break;
+            case "*":
+                double result3 = umnojit.apply(num1, num2);
+                System.out.println ("Результат: " + num1 + " " + operation + " " + num2 + " = " + result3);
+                break;
+            case "/":
+                double num3 = num1;
+                double num4 = num2;
+                double result4 = delenie.apply(num3, num4);
+                System.out.println ("Результат: " + num1 + " " + operation + " " + num2 + " = " + result4);
+                break;
+            default:
+                System.out.println("Ошибка");
+        }
+    }
+}
